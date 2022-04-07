@@ -36,9 +36,9 @@ pipeline {
     stage("Deploying Docker Container with webapp to Prod Server"){
 	    steps{
 		    sshagent(['Docker_Prod_Server_SSH']) {
-                        sh 'ssh -o StrictHostkeyChecking=no ubuntu@172.31.85.1 docker rm -f javawebappcontainer || true'
+                        sh 'ssh -o StrictHostkeyChecking=no ec2-user@172.31.95.161 docker rm -f javawebappcontainer || true'
 			    
-			sh 'ssh -o StrictHostkeyChecking=no ubuntu@172.31.85.1 docker run -d -p 8080:8080 --name javawebappcontainer jagadeeshreddybhimireddy/java-web-app-docker'
+			sh 'ssh -o StrictHostkeyChecking=no ec2-user@172.31.95.161 docker run -d -p 8080:8080 --name javawebappcontainer jagadeeshreddybhimireddy/java-web-app-docker'
                         }
 	          }
 	}
