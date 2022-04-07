@@ -4,6 +4,9 @@ pipeline {
     maven 'Maven'
   }
   stages {
+    
+    def buildNumber = BUILD_NUMBER
+    
     stage ('Initialize') {
       steps {
         sh '''
@@ -16,7 +19,10 @@ pipeline {
       steps {
       sh 'mvn clean package'
        }
-    }  
+    } 
+    stage("Building Docker Image"){
+	    sh"docker build -t jagadeeshreddybhimireddy/java-web-app-docker:${buildNumber} ."
+    }
   
   }
 }
