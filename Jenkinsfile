@@ -1,10 +1,10 @@
 pipeline {
   agent any 
-	
+  def buildNumber = BUILD_NUMBER	
   tools {
     maven 'Maven'
   }
-  def buildNumber = BUILD_NUMBER	
+  	
   stages {
     
     stage ('Initialize') {
