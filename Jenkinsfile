@@ -1,6 +1,5 @@
 pipeline {
-  agent any 
-  def buildNumber = BUILD_NUMBER	
+  agent any 	
   tools {
     maven 'Maven'
   }
@@ -22,7 +21,7 @@ pipeline {
     }
     stage("Building Docker Image"){
 	    steps{
-		    sh'docker build -t jagadeeshreddybhimireddy/java-web-app-docker:${buildNumber} .'
+		    sh'docker build -t jagadeeshreddybhimireddy/java-web-app-docker .'
 	    }
     }	    
 	  
