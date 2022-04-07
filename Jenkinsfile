@@ -19,10 +19,12 @@ pipeline {
       steps {
       sh 'mvn clean package'
        }
-    } 
-    stage("Building Docker Image"){
-	    sh"docker build -t jagadeeshreddybhimireddy/java-web-app-docker:${buildNumber} ."
     }
-  
+    stage("Building Docker Image"){
+	    steps{
+		    sh'docker build -t jagadeeshreddybhimireddy/java-web-app-docker:${buildNumber} .'
+	    }
+    }	    
+	  
   }
 }
