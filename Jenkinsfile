@@ -13,7 +13,15 @@ pipeline {
                     echo "M2_HOME = ${M2_HOME}"
             ''' 
       }
-    }   
+    }
+	  
+    stage('Static SNYK Scan') {
+
+	steps{
+        snykSecurity failOnError: false, organisation: 'jagadeesh4321indian', projectName: 'webapp', snykInstallation: 'Snyk', snykTokenId: 'jagadeesh4321indian'
+		}
+	}
+	 
     stage ('Build') {
       steps {
       sh 'mvn clean package'
